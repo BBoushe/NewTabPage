@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+body 
+{
+	padding: 40px;
+	background-color: #141414;
+}
+
+.center 
+{
+	padding: 40px;
+}
+
+.text
+{
+	width: 100%;
+	height: 40px;
+	text-align: center;
+    white-space: nowrap;
+	overflow: hidden;
+	font-family: 'System', monospace;
+	font-size: 21px;
+	color: #12d94d;
+	position: relative;
+	top: -10px;
+}
+
+#image 
+{
+	width: 50%;
+	max-width: 400px;
+	max-height: 536px;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #f72209;
+	position: center;
+	
+}
+
+#parent {
+  white-space: nowrap;
+  overflow: visible;  
+  font-size: 24px;
+  color: rgba(255,255,255,.70);
+  position: relative;
+  margin: 0 auto;
+}
+
+#border {
+  border-bottom: solid 3px rgba(0,255,0,.75);
+  width: 20px;
+  position: relative;
+  bottom:50px;
+  left: -5px;
+  margin-left: auto;
+}
+
+/* Animation */
+#parent {
+  animation: animated-text 1s steps(30,end) 1s 1 normal both
+}
+
+#border {
+   animation: animated-cursor 600ms steps(30,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 400px;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-bottom-color: rgba(0,255,0,.75);}
+  to{border-bottom-color: transparent;}
+}
+
+
+
+
+
+
+
+
