@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Read Later Picker",
+    "version": "1.0",
+    "description": "Randomly picks two bookmarks from the Read Later folder, opens them, and removes them.",
+    "permissions": [
+      "bookmarks", 
+      "tabs"
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "browser_action": {
+      "default_popup": "index.html"
+    }
+  }
+  

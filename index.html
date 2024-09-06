@@ -1,17 +1,39 @@
 <html>
 
 <head>
-	<title>New Tab</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>New Tab</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
-	<div class="center">	
-        <img  id="image" src="pog_final.png">
-			
-		<div id="parent">
-			<p class="text" id="typewrite"> > Where are we going, Champ?</p> <div id="border"></div></div>
+    <div class="center">
+        <img id="image" src="./images/pog_final.png">
+        
+        <div id="parent">
+            <p class="text" id="typewrite"> > Where are we going, Champ?</p>
+            <div id="border"></div>
+        </div>
     </div>
+    
+    <!-- Button containers -->
+    <div class="button-section">
+        <div class="button-container">
+            <button class="icon-button" onclick="openMail()">
+                <img src="./images/mail-icon.png" alt="Mail Icon" class="icon">
+            </button>
+            <button class="icon-button" onclick="openTools()">
+                <img src="./images/calendar-icon.png" alt="Tools Icon" class="icon">
+            </button>
+            <button class="icon-button" onclick="openCourses()">
+                <img src="./images/courses-icon.png" alt="Phone Icon" class="icon">
+            </button>
+        </div>
+        
+        <div class="button-container">
+            <button id="openBookmarksButton">Read Something Interesting</button>
+        </div>
+    </div>    
 </body>
 
 </html>
