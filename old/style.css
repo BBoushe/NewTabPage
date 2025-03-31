@@ -41,14 +41,15 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
-    border: 1px solid #f72209;
+    border: 1.5px solid #f72209;
+
 }
 
 #parent {
     white-space: nowrap;
     overflow: visible;
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.70);
+    color: rgba(159, 84, 84, 0.7);
     margin: 0 auto;
     margin-top: 20px;
 }
