@@ -1,0 +1,168 @@
+:root{
+    --image-scale: 0.6;
+    --image-width: 832px;
+    --image-height: 1133px;
+}
+
+.image-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: calc(var(--image-width) * var(--image-scale));
+    max-height: calc(var(--image-height) * var(--image-scale));
+    border: 1.5px solid #f72209;
+}
+
+.image-container img:hover {
+    box-shadow: 0 0 30px rgba(247, 34, 9, 0.5);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    flex: 1;                     /* ⬅️ makes all columns take equal width */
+    border-left: 1px solid #2a2a2a;  /* subtle vertical separator */
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.button-container h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #12d94d;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 6px;
+    text-align: center;
+}
+
+.menu-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.text {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 24px;
+    color: #12d94d;
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+@keyframes animated-cursor {
+    from { border-bottom-color: rgba(0, 255, 0, 0.75); }
+    to { border-bottom-color: transparent; }
+}
+
+.icon-button {
+    background-color: #1c1c1c;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: #2a2a2a;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+    filter: invert(75%) sepia(10%) saturate(400%) hue-rotate(80deg) brightness(100%) contrast(90%);
+}
+
+
+.no-border {
+    border-left: none;
+}
+
+.actions-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-buttons-container {
+    display: flex;
+    width: 50%;
+    margin-top: 10px;
+    gap: 3px;
+}
+
+.action-button {
+    flex: 1;
+    text-align: center;
+    padding: 20px 28px;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #2a2a2a;
+    cursor: pointer;
+    outline: none;
+    background-color: #1c1c1c;
+}
+
+/* For the left button (first child) */
+.action-button:first-child {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;  /* Remove the right border so it touches the next button */
+}
+
+/* For the right button (last child) */
+.action-button:last-child {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.action-button:hover {
+    background-color: #2a2a2a;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.green-button {
+    color: #12d94d;
+}
+
+.red-button {
+    color: #f72209;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "My Custom New Tab App",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "A custom new tab page built in React that also opens random bookmarks.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "tabs"
+  ]
+}
