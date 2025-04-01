@@ -7,5 +7,29 @@
     justify-content: center;
 }
 
+/* Slide from right to left */
+
+.menu-enter {
+    opacity: 0;
+    transform: translateX(100px); /* Start 100px to the right */
+}
+
+.menu-enter-active {
+    opacity: 1;
+    transform: translateX(0); /* Move to default position */
+    transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.menu-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-exit-active {
+    opacity: 0;
+    transform: translateX(100px); /* Move back to the right */
+    transition: opacity 150ms ease, transform 150ms ease;
+}
+
 
 

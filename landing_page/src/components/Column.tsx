@@ -14,8 +14,8 @@ function Column({ title, isFirst, ButtonList }: ColumnProps) {
         <div className={`button-container ${isFirst ? 'no-border' : ''}`}>
             <h1>{title}</h1>
             <div className="button-grid">
-                {ButtonList.map((item: ButtonItem) => (
-                    <Button imgSrc={item.imgSrc} onClickHandler={item.action} alt={item.alt} />
+                {ButtonList.map((item: ButtonItem, index: number) => (
+                    <Button key={index} imgSrc={item.imgSrc} onClickHandler={item.action} alt={item.alt} />
                 ))}
             </div>
         </div>

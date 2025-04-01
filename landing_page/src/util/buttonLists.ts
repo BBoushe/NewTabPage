@@ -6,6 +6,9 @@ import courses_icon from '../assets/icons/courses-icon.png';
 import trello_icon from '../assets/icons/trello-icon.png';
 import leetcode_icon from '../assets/icons/leetcode-icon.png';
 import nextjs_icon from '../assets/icons/nextjs-icon.png';
+import nestjs_icon from '../assets/icons/nestjs-icon.png';
+import react_icon from '../assets/icons/react-icon.png';
+import js_icon from '../assets/icons/js-icon.png';
 
 import { actions } from "./openWebsites.ts";
 
@@ -20,6 +23,9 @@ const devButtons: ButtonItem[] = [
     { imgSrc: courses_icon, action: actions.openCourses, alt: "Courses" },
     { imgSrc: leetcode_icon, action: actions.openLeetCode, alt: "LeetCode" },
     { imgSrc: nextjs_icon, action: actions.openNextDoc, alt: "Next.js Documentation" },
+    { imgSrc: nestjs_icon, action: actions.openNestDoc, alt: "Nest.js Documentation" },
+    { imgSrc: react_icon, action: actions.openReactDoc, alt: "React Documentation" },
+    { imgSrc: js_icon, action: actions.openJsDoc, alt: "JavaScript Documentation" },
 ]
 
 const productivityButtons: ButtonItem[] = [

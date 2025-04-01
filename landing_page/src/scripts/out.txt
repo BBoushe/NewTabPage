@@ -2,6 +2,7 @@ App.tsx:
 <Start of file>
 import Image from './components/Image';
 import Menu from './components/Menu';
+import { CSSTransition } from "react-transition-group";
 
 import './App.css';
 
@@ -15,7 +16,14 @@ function App() {
       <div className="app-container">
         <Image onClick={() => setImageClicked(!imageClicked)} />
 
-        {imageClicked && <Menu/>}
+        <CSSTransition
+            in={imageClicked}
+            timeout={300}
+            classNames="menu"
+            unmountOnExit
+        >
+          <Menu/>
+        </CSSTransition>
       </div>
     </>
   )
@@ -49,24 +57,81 @@ function openMail(): void {
     window.open('https://mail.yahoo.com/d/folders/1');
 }
 
-function openTools(): void  {
+function openCalendars(): void  {
+    window.open('https://calendar.google.com/u/0');
+    window.open('https://calendar.google.com/u/1');
+}
+
+function openTrello(): void{
     window.open('https://trello.com');
     window.open('https://todoist.com');
-    window.open('https://calendar.google.com');
 }
 
 function openCourses(): void  {
     window.open('https://www.udemy.com');
-    window.open('https://www.appbrewery.co/p/ios-course-resources/');
 }
 
-export { openMail, openTools, openCourses };
+function openGithub(): void {
+    window.open('https://github.com/BBoushe');
+}
+
+function openLinkedIn(): void {
+    window.open('https://linkedin.com/in/alek-pachemski');
+}
+
+function openLeetCode(): void {
+    window.open('https://leetcode.com/');
+    window.open('https://www.techinterviewhandbook.org/grind75/');
+}
+
+function openNextDoc(): void {
+    window.open('https://nextjs.org/docs');
+}
+
+function openReactDoc(): void {
+    window.open('https://react.dev/reference/react');
+}
+
+function openNestDoc(): void {
+    window.open('https://docs.nestjs.com/');
+}
+
+function openJsDoc(): void {
+    window.open('https://developer.mozilla.org/en-US/docs/Web/JavaScript');
+}
+
+const actions = {
+    openMail: openMail,
+    openCalendars: openCalendars,
+    openCourses: openCourses,
+    openTrello: openTrello,
+    openGithub: openGithub,
+    openLinkedIn: openLinkedIn,
+    openLeetCode: openLeetCode,
+    openNextDoc: openNextDoc,
+    openReactDoc: openReactDoc,
+    openNestDoc: openNestDoc,
+    openJsDoc: openJsDoc,
+}
+
+export { actions };
 <End of file>
 
 util/buttonLists.ts:
 <Start of file>
 import calendar_icon from '../assets/icons/calendar-icon.png';
-import { openMail, openCourses, openTools } from "./openWebsites.ts";
+import mail_icon from '../assets/icons/mail-icon.png';
+import github_icon from '../assets/icons/github-icon.png';
+import linkedin_icon from '../assets/icons/linkedin-icon.png';
+import courses_icon from '../assets/icons/courses-icon.png';
+import trello_icon from '../assets/icons/trello-icon.png';
+import leetcode_icon from '../assets/icons/leetcode-icon.png';
+import nextjs_icon from '../assets/icons/nextjs-icon.png';
+import nestjs_icon from '../assets/icons/nestjs-icon.png';
+import react_icon from '../assets/icons/react-icon.png';
+import js_icon from '../assets/icons/js-icon.png';
+
+import { actions } from "./openWebsites.ts";
 
 export type ButtonItem = {
     imgSrc: string;
@@ -75,12 +140,26 @@ export type ButtonItem = {
 }
 
 const devButtons: ButtonItem[] = [
-    { imgSrc: calendar_icon, action: openMail, alt: "Calendar" },
-    { imgSrc: calendar_icon, action: openCourses, alt: "Calendar" },
-    { imgSrc: calendar_icon, action: openTools, alt: "Calendar" },
+    { imgSrc: github_icon, action: actions.openGithub, alt: "Github" },
+    { imgSrc: courses_icon, action: actions.openCourses, alt: "Courses" },
+    { imgSrc: leetcode_icon, action: actions.openLeetCode, alt: "LeetCode" },
+    { imgSrc: nextjs_icon, action: actions.openNextDoc, alt: "Next.js Documentation" },
+    { imgSrc: nestjs_icon, action: actions.openNestDoc, alt: "Nest.js Documentation" },
+    { imgSrc: react_icon, action: actions.openReactDoc, alt: "React Documentation" },
+    { imgSrc: js_icon, action: actions.openJsDoc, alt: "JavaScript Documentation" },
 ]
 
-export { devButtons };
+const productivityButtons: ButtonItem[] = [
+    { imgSrc: calendar_icon, action: actions.openCalendars, alt: "Calendar" },
+    { imgSrc: mail_icon, action: actions.openMail, alt: "Mail" },
+    { imgSrc: trello_icon, action: actions.openTrello, alt: "Trello" },
+]
+
+const personalButtons: ButtonItem[] = [
+    { imgSrc: linkedin_icon, action: actions.openLinkedIn, alt: "LinkedIn" },
+]
+
+export { devButtons, productivityButtons, personalButtons };
 <End of file>
 
 util/actions.ts:
@@ -158,6 +237,26 @@ App.css:
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+}
+
+/* CSSTransition classes */
+.menu-enter {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.menu-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+.menu-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+.menu-exit-active {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 300ms ease, transform 300ms ease;
 }
 
 
@@ -284,11 +383,18 @@ export default Image;
 
 components/components.css:
 <Start of file>
+/* Variables */
+
 :root{
     --image-scale: 0.6;
     --image-width: 832px;
     --image-height: 1133px;
+    --purple-color: #CC9AEC;
+    --green-color: #12d94d;
+    --red-color: #f72209;
 }
+
+/* Containers */
 
 .image-container {
     width: 50%;
@@ -300,11 +406,11 @@ components/components.css:
 .image-container img {
     max-width: calc(var(--image-width) * var(--image-scale));
     max-height: calc(var(--image-height) * var(--image-scale));
-    border: 1.5px solid #f72209;
+    border: 2px solid var(--purple-color);
 }
 
 .image-container img:hover {
-    box-shadow: 0 0 30px rgba(247, 34, 9, 0.5);
+    box-shadow: 0 0 40px rgba(204, 154, 236, 0.6);
 }
 
 .button-container {
@@ -313,22 +419,15 @@ components/components.css:
     align-items: center;
     gap: 12px;
     padding: 10px;
-    flex: 1;                     /* ⬅️ makes all columns take equal width */
-    border-left: 1px solid #2a2a2a;  /* subtle vertical separator */
-}
-
-.button-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 12px;
+    flex: 1;
+    border-left: 1px solid #2a2a2a;
 }
 
 .button-container h1 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #12d94d;
-    border-bottom: 1px solid #2a2a2a;
+    color: var(--green-color);
+    height: 100%;
     padding-bottom: 6px;
     text-align: center;
 }
@@ -342,6 +441,20 @@ components/components.css:
     box-sizing: border-box;
 }
 
+.actions-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-buttons-container {
+    display: flex;
+    width: 50%;
+    margin-top: 10px;
+    gap: 3px;
+}
+
 .menu-nav {
     display: flex;
     flex-direction: row;
@@ -351,13 +464,22 @@ components/components.css:
     width: 100%;
 }
 
+/* Utility */
+/*--------------------------------------------------------*/
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
 .text {
     width: 100%;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     font-size: 24px;
-    color: #12d94d;
+    color: var(--green-color);
     margin-top: 20px;
     position: relative;
     display: inline-block;
@@ -383,7 +505,7 @@ components/components.css:
 
 .icon-button:hover {
     background-color: #2a2a2a;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
 .icon {
@@ -395,20 +517,6 @@ components/components.css:
 
 .no-border {
     border-left: none;
-}
-
-.actions-container {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.action-buttons-container {
-    display: flex;
-    width: 50%;
-    margin-top: 10px;
-    gap: 3px;
 }
 
 .action-button {
@@ -446,11 +554,11 @@ components/components.css:
 }
 
 .green-button {
-    color: #12d94d;
+    color: var(--green-color);
 }
 
 .red-button {
-    color: #f72209;
+    color: var(--purple-color);
 }
 
 <End of file>
@@ -481,14 +589,14 @@ export default MenuActions;
 components/MenuNavigation.tsx:
 <Start of file>
 import Column from "./Column.tsx";
-import {devButtons} from "../util/buttonLists.ts";
+import { devButtons, productivityButtons, personalButtons } from "../util/buttonLists.ts";
 
 function MenuNavigation() {
     return (
         <div className="menu-nav">
             <Column title={"Developer"}  ButtonList={devButtons} isFirst />
-            <Column title={"Productivity"} ButtonList={devButtons} />
-            <Column title={"Personal"} ButtonList={devButtons} />
+            <Column title={"Productivity"} ButtonList={productivityButtons} />
+            <Column title={"Personal"} ButtonList={personalButtons} />
         </div>
     )
 }
@@ -514,15 +622,9 @@ function Column({ title, isFirst, ButtonList }: ColumnProps) {
         <div className={`button-container ${isFirst ? 'no-border' : ''}`}>
             <h1>{title}</h1>
             <div className="button-grid">
-                {ButtonList.forEach((item: ButtonItem): void => {
-                    <Button imgSrc={item.imgSrc} onClickHandler={item.action} alt={item.alt} />)
-                    }
-                }
-
-                {/*<Button imgSrc={calendar_icon} onClickHandler={openMail} alt="Calendar" />*/}
-                {/*<Button imgSrc={calendar_icon} onClickHandler={openMail} alt="Calendar" />*/}
-                {/*<Button imgSrc={calendar_icon} onClickHandler={openMail} alt="Calendar" />*/}
-                {/*<Button imgSrc={calendar_icon} onClickHandler={openMail} alt="Calendar" />*/}
+                {ButtonList.map((item: ButtonItem) => (
+                    <Button imgSrc={item.imgSrc} onClickHandler={item.action} alt={item.alt} />
+                ))}
             </div>
         </div>
     )

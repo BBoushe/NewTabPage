@@ -17,7 +17,6 @@ function openTrello(): void{
 
 function openCourses(): void  {
     window.open('https://www.udemy.com');
-    window.open('https://www.appbrewery.co/p/ios-course-resources/');
 }
 
 function openGithub(): void {
@@ -37,6 +36,18 @@ function openNextDoc(): void {
     window.open('https://nextjs.org/docs');
 }
 
+function openReactDoc(): void {
+    window.open('https://react.dev/reference/react');
+}
+
+function openNestDoc(): void {
+    window.open('https://docs.nestjs.com/');
+}
+
+function openJsDoc(): void {
+    window.open('https://developer.mozilla.org/en-US/docs/Web/JavaScript');
+}
+
 const actions = {
     openMail: openMail,
     openCalendars: openCalendars,
@@ -46,6 +57,9 @@ const actions = {
     openLinkedIn: openLinkedIn,
     openLeetCode: openLeetCode,
     openNextDoc: openNextDoc,
+    openReactDoc: openReactDoc,
+    openNestDoc: openNestDoc,
+    openJsDoc: openJsDoc,
 }
 
 export { actions };
