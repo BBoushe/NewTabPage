@@ -7,7 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-scripts/
+landing_page/src/scripts/
+old/
 landing_page/node_modules
 dist
 dist-ssr
