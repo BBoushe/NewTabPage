@@ -120,7 +120,8 @@
 
 .icon-button:hover {
     background-color: #2a2a2a;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    /*box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);*/
+    box-shadow: 0 0 12px rgba(204, 154, 236, 0.3);
 }
 
 .icon {
