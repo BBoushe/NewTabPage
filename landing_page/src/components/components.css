@@ -6,7 +6,9 @@
     --image-height: 1133px;
     --purple-color: #CC9AEC;
     --green-color: #12d94d;
+    --color-green-dark: #0f8100;
     --red-color: #f72209;
+    --color-white-25: color-mix(in srgb, #ffffff, transparent 75%);
 }
 
 /* Containers */
@@ -98,6 +100,7 @@
     margin-top: 20px;
     position: relative;
     display: inline-block;
+    text-shadow: 3px 1px 0px color-mix(in srgb,var(--color-green-dark),transparent 50%),0 0 1ex var(--color-green-dark),0 0 2px var(--color-white-25);
 }
 
 @keyframes animated-cursor {
