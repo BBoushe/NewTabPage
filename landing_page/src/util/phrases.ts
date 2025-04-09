@@ -5,6 +5,14 @@ const phrases: string[] = [
     'Как собака на сене',
     'Кашкавал летa, авион слета',
     'Do I smell some Bussy?',
+    'お前はもう死んでいる',
+    'ワンチャンある',
+    'No tengo pruebas, pero tampoco dudas.',
+    'Eso estuvo muy random.',
+    'Ich hab’ kein’ Bock mehr.',
+    'Wah gwaan',
+    'A who big up demself so? Eeh? Wheh di likkle plane deh now?',
+    'Груевски се врати!',
 ];
 
 function pickRandomPhrase(): string[] {
