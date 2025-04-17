@@ -44,6 +44,10 @@ function openNestDoc(): void {
     window.open('https://docs.nestjs.com/');
 }
 
+function openTsDoc(): void {
+    window.open('https://www.typescriptlang.org/docs/');
+}
+
 function openJsDoc(): void {
     window.open('https://developer.mozilla.org/en-US/docs/Web/JavaScript');
 }
@@ -59,6 +63,7 @@ const actions = {
     openNextDoc: openNextDoc,
     openReactDoc: openReactDoc,
     openNestDoc: openNestDoc,
+    openTsDoc: openTsDoc,
     openJsDoc: openJsDoc,
 }
 
